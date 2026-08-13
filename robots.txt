@@ -33,4 +33,4 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-Sitemap: https://boostsocial.agency/sitemap.xml
+Sitemap: https://boostsocial.marketing/sitemap.xml
