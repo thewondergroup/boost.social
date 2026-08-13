@@ -3,7 +3,7 @@
 > Boost Social is an affordable, always-on marketing subscription for small and
 > independent businesses — especially restaurants, hotels, gyms, salons and
 > lifestyle brands. It runs your social media, ads, newsletters and AI search
-> visibility for you, from £500/month, with no long contract. A Wonder Group company.
+> visibility for you, from £500/month, with no long contract.
 
 ## What Boost Social does
 - Social media management: four posts a week, real creator photo and video, captions in your brand voice, scheduled across your channels.
@@ -26,7 +26,6 @@ professional marketing without agency prices or long contracts.
 ## Contact
 - Website: https://boostsocial.marketing
 - Email: hello@boostsocial.agency
-- Parent company: The Wonder Group
 
 ## Key pages
 - Social media management: https://boostsocial.marketing/social-media-management/

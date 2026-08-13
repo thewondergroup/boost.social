@@ -26,7 +26,7 @@ Each folder has its own `index.html` and serves at a clean URL (e.g. `boostsocia
 
 ## Steps
 
-1. **Create a public repo** under `thewondergroup`, e.g. `boost-social`.
+1. **Create a public repo under a *separate, neutral* GitHub account** — a fresh account not linked to any of your other brands (e.g. an account like `boostsocial`), repo `boost-social`. See "Keeping Boost Social separate" below for why this matters.
 2. **Upload the whole unzipped folder**, preserving the subfolders (drag-and-drop in the GitHub web UI works; make sure `.nojekyll` and the page subfolders come across).
 3. **Settings → Pages → Source: Deploy from a branch → `main` / `/root` → Save.**
 4. GitHub reads the `CNAME` file and sets `boostsocial.marketing` automatically. Tick **Enforce HTTPS** once it appears.
@@ -43,12 +43,22 @@ Each folder has its own `index.html` and serves at a clean URL (e.g. `boostsocia
    AAAA  @   2606:50c0:8002::153
    AAAA  @   2606:50c0:8003::153
    ```
-   **www** — a CNAME record:
+   **www** — a CNAME record (points at *your Boost GitHub account*):
    ```
-   CNAME  www   thewondergroup.github.io
+   CNAME  www   <your-boost-github-username>.github.io
    ```
 
 DNS takes a few minutes to a few hours. Then `https://boostsocial.marketing` is live.
+
+## Keeping Boost Social separate
+
+Boost Social is a standalone brand — nothing on the site references any other company. One thing to watch on the technical side: the **`www` CNAME record publicly reveals which GitHub account hosts the site** (anyone can look up DNS and see `<account>.github.io`). So to keep Boost genuinely unconnected to your other brands:
+
+- Host it under a **fresh GitHub account** created for Boost (not an existing brand account), **or**
+- Skip the `www` subdomain entirely and serve only the apex `boostsocial.marketing` (the apex A/AAAA records point to shared GitHub IPs and don't reveal the account), **or**
+- Host on **Cloudflare Pages / Netlify** under a separate account — cleanest separation, and the domain just points there.
+
+Everything else (the apex records, the content, the email) is already brand-neutral.
 
 ## The moment it's live
 
