@@ -72,9 +72,8 @@ h1 .g{color:var(--accent2)}
 .phone{position:relative;width:290px;max-width:100%;aspect-ratio:9/19.2;margin:0 auto;border-radius:46px;background:#05060a;border:2px solid rgba(255,255,255,.16);box-shadow:0 40px 90px rgba(0,0,0,.6);padding:9px}
 .phone:before{content:"";position:absolute;top:11px;left:50%;transform:translateX(-50%);width:116px;height:20px;background:#05060a;border-radius:0 0 16px 16px;z-index:6}
 .phone-screen{position:relative;width:100%;height:100%;border-radius:38px;overflow:hidden;background:#000}
-.phone-stack{position:absolute;inset:0}
-.pv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s ease}
-.pv.active{opacity:1}
+.phone-stack{position:absolute;inset:0;display:flex;flex-direction:column;will-change:transform}
+.pv{flex:0 0 100%;width:100%;height:100%;object-fit:cover;display:block}
 .phone-ui{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(0,0,0,.6),transparent 42%)}
 .pui-badge{position:absolute;top:18px;left:14px;background:rgba(124,92,255,.92);color:#fff;font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 9px;border-radius:100px}
 .pui-side{position:absolute;right:11px;bottom:104px;display:flex;flex-direction:column;gap:16px;align-items:center;color:#fff}
@@ -84,6 +83,14 @@ h1 .g{color:var(--accent2)}
 .pui-handle{display:flex;align-items:center;gap:8px;font-weight:700;font-size:12.5px}
 .pui-av{width:25px;height:25px;border-radius:50%;background:linear-gradient(135deg,#7C5CFF,#e05bb0);border:2px solid #fff;flex:0 0 auto}
 .pui-cap{font-size:11.5px;margin-top:6px;line-height:1.4;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.laptop{max-width:560px;margin:6px auto 0}
+.laptop-lid{background:#0c0e14;border:2px solid rgba(255,255,255,.14);border-radius:16px 16px 8px 8px;padding:12px;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.laptop-screen{position:relative;width:100%;aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:#000;border:1px solid rgba(255,255,255,.08)}
+.lap-img{position:absolute;top:0;left:0;width:100%;height:auto;opacity:0;animation:lapcycle 14s infinite}
+.lap-img.b{animation-delay:-7s}
+.laptop-base{height:13px;width:116%;margin:0 0 0 -8%;background:linear-gradient(#232733,#0c0e14);border-radius:0 0 16px 16px;position:relative}
+.laptop-base:before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:92px;height:6px;background:rgba(0,0,0,.5);border-radius:0 0 8px 8px}
+@keyframes lapcycle{0%{opacity:0;transform:translateY(0)}3%{opacity:1}6%{opacity:1;transform:translateY(0)}44%{opacity:1;transform:translateY(-58%)}48%{opacity:0;transform:translateY(-58%)}50%{opacity:0;transform:translateY(0)}100%{opacity:0;transform:translateY(0)}}
 /* dashboard */
 .dash{margin-top:44px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));border:1px solid var(--line);border-radius:22px;padding:18px;display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
 .tile{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
@@ -198,7 +205,7 @@ footer.site{border-top:1px solid var(--line);padding:48px 0 40px;margin-top:12px
   <div class="founder">Founded by award-winning marketers who have grown Michelin-starred restaurants, large hotel groups and international brands.</div>
   </div>
   <div class="phone"><div class="phone-screen">
-    <div class="phone-stack"><video class="pv active" muted loop playsinline preload="auto" poster="/media/reel-temper.jpg"><source src="/media/reel-temper.mp4" type="video/mp4"></video><video class="pv" muted loop playsinline preload="none" poster="/media/reel-azzura.jpg"><source src="/media/reel-azzura.mp4" type="video/mp4"></video><video class="pv" muted loop playsinline preload="none" poster="/media/reel-dimsum.jpg"><source src="/media/reel-dimsum.mp4" type="video/mp4"></video><video class="pv" muted loop playsinline preload="none" poster="/media/reel-paradiso.jpg"><source src="/media/reel-paradiso.mp4" type="video/mp4"></video><video class="pv" muted loop playsinline preload="none" poster="/media/reel-kasa.jpg"><source src="/media/reel-kasa.mp4" type="video/mp4"></video></div>
+    <div class="phone-stack" id="pstack"><video class="pv" muted loop playsinline preload="auto" poster="/media/reel-temper.jpg"><source src="/media/reel-temper.mp4" type="video/mp4"></video><video class="pv" muted loop playsinline preload="none" poster="/media/reel-azzura.jpg"><source src="/media/reel-azzura.mp4" type="video/mp4"></video><video class="pv" muted loop playsinline preload="none" poster="/media/reel-dimsum.jpg"><source src="/media/reel-dimsum.mp4" type="video/mp4"></video><video class="pv" muted loop playsinline preload="none" poster="/media/reel-paradiso.jpg"><source src="/media/reel-paradiso.mp4" type="video/mp4"></video><video class="pv" muted loop playsinline preload="none" poster="/media/reel-kasa.jpg"><source src="/media/reel-kasa.mp4" type="video/mp4"></video><video class="pv" muted loop playsinline preload="none" poster="/media/reel-temper.jpg"><source src="/media/reel-temper.mp4" type="video/mp4"></video></div>
     <div class="phone-ui">
       <div class="pui-badge">Your feed · always on</div>
       <div class="pui-side">
@@ -272,10 +279,13 @@ footer.site{border-top:1px solid var(--line);padding:48px 0 40px;margin-top:12px
     </div>
   </div>
   <div class="eyebrow2" style="margin-top:36px">Recent builds</div>
-  <p class="lead" style="margin-top:0">A couple of the booking-ready sites we've designed and built.</p>
-  <div class="shots">
-    <div class="shot"><img src="/media/site-cluck.jpg" alt="Cluck Fried Chicken — a restaurant website designed and built by Boost Social" loading="lazy"></div>
-    <div class="shot"><img src="/media/site-burgerhouse.jpg" alt="The Burger House — a restaurant website designed and built by Boost Social" loading="lazy"></div>
+  <p class="lead" style="margin-top:0">A couple of the booking-ready sites we've designed and built — scrolling, live.</p>
+  <div class="laptop">
+    <div class="laptop-lid"><div class="laptop-screen">
+      <img class="lap-img a" src="/media/site-cluck.jpg" alt="Cluck Fried Chicken — a restaurant website designed and built by Boost Social" loading="lazy">
+      <img class="lap-img b" src="/media/site-burgerhouse.jpg" alt="The Burger House — a restaurant website designed and built by Boost Social" loading="lazy">
+    </div></div>
+    <div class="laptop-base"></div>
   </div>
 </div></section>
 
@@ -349,8 +359,13 @@ footer.site{border-top:1px solid var(--line);padding:48px 0 40px;margin-top:12px
   <div class="fbottom"><span>© 2026 Boost Social — A Wonder Group company</span><span>Cancel any time · Founded by award-winning hospitality marketers</span></div>
   </div></footer>
 <script>
-(function(){var v=[].slice.call(document.querySelectorAll('.pv'));if(v.length<1)return;
-function show(n){v.forEach(function(x,k){var a=k===n;x.classList.toggle('active',a);if(a){try{x.play()}catch(e){}}else{try{x.pause()}catch(e){}}});}
-try{v[0].play()}catch(e){}var i=0;setInterval(function(){i=(i+1)%v.length;show(i);},5200);})();
+(function(){var stack=document.getElementById('pstack');if(!stack)return;
+var vids=[].slice.call(stack.children);var total=vids.length;var i=0,dur=650,hold=4200;
+function play(idx){vids.forEach(function(v,k){if(k===idx){try{v.play()}catch(e){}}else{try{v.pause()}catch(e){}}});}
+try{vids[0].play()}catch(e){}
+function loop(){i++;stack.style.transition='transform '+dur+'ms cubic-bezier(.5,0,.22,1)';stack.style.transform='translateY(-'+(i*100)+'%)';play(Math.min(i,total-1));
+if(i>=total-1){setTimeout(function(){stack.style.transition='none';i=0;stack.style.transform='translateY(0)';void stack.offsetHeight;play(0);setTimeout(loop,hold);},dur+40);}
+else{setTimeout(loop,hold+dur);}}
+setTimeout(loop,hold);})();
 </script>
 </body></html>
